@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Radar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: transparent; /* Make background transparent */
+        }
+        canvas {
+            max-width: 600px;
+            max-height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="radarChart"></canvas>
+
+    <script>
+        const ctx = document.getElementById('radarChart').getContext('2d');
+        const radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Extroverted', 'Sensing', 'Feeling', 'Judging', 'Introverted', 'Intuition', 'Thinking', 'Perceiving'],
+                datasets: [{
+                    label: 'Personality',
+                    data: [15, 45, 25, 90, 85, 60, 75, 10],
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',  // Light grey fill
+                    borderColor: 'rgba(0, 0, 0, 0.8)',       // Dark border
+                    pointBackgroundColor: '#000',            // Black points
+                    pointBorderColor: '#fff',
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20,
+                            color: '#555' // Grey tick labels
+                        },
+                        grid: {
+                            color: '#ccc' // Grey grid lines
+                        },
+                        angleLines: {
+                            color: '#ccc'
+                        },
+                        pointLabels: {
+                            color: '#000' // Black axis labels
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#000' // Black legend text
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
